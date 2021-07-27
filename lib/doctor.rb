@@ -46,8 +46,6 @@ class Doctor
   def delete
     DB.exec("DELETE FROM doctors WHERE id = #{@id};")
   end
-  def delete
-    DB.exec("DELETE FROM doctors WHERE id = #{@id};")
-  end
+  
 
 end
