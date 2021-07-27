@@ -1,0 +1,33 @@
+<h2>Doctor Name: <%= @doctor.name %></h2>
+
+<h3>Doctor patients</h3>
+
+  <% if @doctor.patients %>
+    <ul>
+      <% @doctor.patients.each do |patient| %>
+        <li><a href="/doctors/<%= @doctor.id %>/patients/<%= patient.id %>"><%= patient.name %></a></li>
+        <li><a href="/doctors/<%= @doctor.id %>/patients/<%= patient.id %>"><%= patient.birthday %></a></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>There are no patients listed for this doctor yet.</p>
+  <% end %>
+
+<form action="/doctors/<%= @doctor.id %>/patients" method="post">
+  <div class="form-group">
+    <label for="patient_name">Patient name:</label>
+    <input id="patient_name" name="patient_name" class="form-control" type="text">
+    <label for="patient_name">Patient birthday:</label>
+    <input id="patient_name" name="patient_name" class="form-control" type="text">
+    <label for="patient_name">Patient reason for visit:</label>
+    <textarea id="patient_name" name="patient_name" class="form-control" type="text"></textarea>
+  </div>
+  <button type="submit" class="btn">Add patient</button>
+</form>
+
+<br>
+<br>
+
+
+<p><a href="/doctors/<%= @doctor.id %>/edit">Edit Doctor</a></p>
+<p><a href="/doctors">Return to Doctor List</a></p>

@@ -1,0 +1,17 @@
+<h1>Update <%=@doctor.name() %></h1>
+
+<form action="/doctors/<%= @doctor.id() %>" method="post">
+  <input name="_method" type="hidden" value="patch">
+
+  <label for="name">Rename doctor</label>
+  <input id="name" name="name" type="text">
+
+  <button type="submit">Update</button>
+</form>
+
+<form action="/doctors/<%= @doctor.id() %>" method="post">
+  <input name="_method" type="hidden" value="delete">
+
+  <button type="submit">Delete doctor</button>
+</form>
+<p><a href="/doctors">Return to doctor list</a></p>

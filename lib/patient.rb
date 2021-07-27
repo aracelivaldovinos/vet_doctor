@@ -38,7 +38,7 @@ class Patient
     name = returned_ids.fetch('name')
     birthday = returned_ids.fetch('birthday')
     id = returned_ids.fetch('id').to_i
-    doctor_id = returned_ids.fetch("doctor_id")
+    doctor_id = returned_ids.fetch("doctor_id").to_i
     Patient.new({:name => name, :birthday => birthday, :id => id, :doctor_id => doctor_id})
   end
 
@@ -50,5 +50,19 @@ class Patient
   def delete
     DB.exec("DELETE FROM patients WHERE id = #{@id};")
   end
-  
+
+  def doctor
+    Doctor.find(@doctor_id)
+  end
+
+  def self.find_by_doctor(doc_id)
+    doctors = []
+    returned_doctors = DB.exec("SELECT * FROM patients WHERE doctor_id = #{doc_id};")
+    returned_doctors.each() do |doctor|
+      name = doctor.fetch("name")
+      id = doctor.fetch("id").to_i
+      doctors.push(Doctor.new({:name => name, :doctor_id => doc_id, :id => id}))
+    end
+    doctors
+  end
 end

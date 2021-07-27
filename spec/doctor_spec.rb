@@ -51,5 +51,16 @@ describe '#Doctor' do
       expect(Doctor.all).to(eq([doctor2]))
     end
   end
+#   describe('#songs') do
+#   it("returns an album's songs") do
+#     album = Album.new({:name => "A Love Supreme", :id => nil, :release_year => 2003, :cost => 1.0})
+#     album.save()
+#     song = Song.new({:name => "Naima", :album_id => album.id, :id => nil})
+#     song.save()
+#     song2 = Song.new({:name => "Cousin Mary", :album_id => album.id, :id => nil})
+#     song2.save()
+#     expect(album.songs).to(eq([song, song2]))
+#   end
+# end
 
 end

@@ -30,12 +30,22 @@ class Doctor
     self.name == doctor_to_compare.name
   end
 
+  # def self.find(id)
+  #   returned_ids = DB.exec("SELECT * FROM doctors WHERE id = #{id};").first
+  #   name = returned_ids.fetch('name')
+  #   specialty = returned_ids.fetch('specialty')
+  #   id = returned_ids.fetch('id').to_i
+  #   Doctor.new({:name => name, :specialty => specialty, :id => id})
+  # end
+
+
   def self.find(id)
-    returned_ids = DB.exec("SELECT * FROM doctors WHERE id = #{id};").first
-    name = returned_ids.fetch('name')
-    specialty = returned_ids.fetch('specialty')
-    id = returned_ids.fetch('id').to_i
-    Doctor.new({:name => name, :specialty => specialty, :id => id})
+    doctor = DB.exec("SELECT * FROM doctors WHERE id = #{id};").first
+      name = doctor.fetch("name")
+      specialty = doctor.fetch('specialty')
+      id = doctor.fetch("id").to_i
+      Doctor.new({:name => name, :specialty => specialty, :id => id})
+
   end
 
   def update(name)
@@ -47,5 +57,7 @@ class Doctor
     DB.exec("DELETE FROM doctors WHERE id = #{@id};")
   end
   
-
+  def patients
+    Patient.find_by_doctor(self.id)
+  end
 end
