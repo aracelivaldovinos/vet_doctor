@@ -36,10 +36,10 @@ get('/doctors/:id') do
   erb(:doctor)
 end
 
-get('/doctors/:id/edit') do
-  @doctor = Doctor.find(params[:id].to_i())
-  erb(:edit_doctor)
-end
+# get('/doctors/:id/edit') do
+#   @doctor = Doctor.find(params[:id].to_i())
+#   erb(:edit_doctor)
+# end
 
 # patch('/doctors/:id') do
 #   @doctor = Doctor.find(params[:id].to_i())
